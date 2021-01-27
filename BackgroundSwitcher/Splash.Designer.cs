@@ -46,7 +46,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(548, 68);
             this.label2.TabIndex = 1;
-            this.label2.Text = "2020";
+            this.label2.Text = "2021";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // progressBar1
@@ -66,7 +66,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(548, 23);
             this.label3.TabIndex = 3;
-            this.label3.Text = "version 2.0 26062020 Copyright © 2020 Quin Schurman";
+            this.label3.Text = "version 2.1 26012021 Copyright © 2021 Quin Schurman";
             this.label3.TextAlign = System.Drawing.ContentAlignment.BottomRight;
             // 
             // Splash

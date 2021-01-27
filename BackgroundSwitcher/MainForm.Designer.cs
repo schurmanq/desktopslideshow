@@ -40,6 +40,8 @@
             this.forwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backwardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripSeparator();
+            this.launchOnStartupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,6 +75,9 @@
             this.switchInterval = new System.Windows.Forms.TrackBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Slideshow = new System.Windows.Forms.GroupBox();
+            this.hourRadio = new System.Windows.Forms.RadioButton();
+            this.minRadio = new System.Windows.Forms.RadioButton();
+            this.secRadio = new System.Windows.Forms.RadioButton();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -93,6 +98,8 @@
             this.queueHeaderIndex = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.queueHeaderFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.queueHeaderPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.shuffleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.mainMenuStrip.SuspendLayout();
             this.trayIconContextMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.switchInterval)).BeginInit();
@@ -118,6 +125,8 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startSlideshowToolStripMenuItem,
             this.exitToolStripMenuItem,
+            this.launchOnStartupToolStripMenuItem,
+            this.toolStripSeparator5,
             this.exitToolStripMenuItem1});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
@@ -129,9 +138,11 @@
             this.startToolStripMenuItem,
             this.stopToolStripMenuItem,
             this.toolStripSeparator1,
-            this.skipCurrentToolStripMenuItem});
+            this.skipCurrentToolStripMenuItem,
+            this.toolStripSeparator6,
+            this.shuffleToolStripMenuItem});
             this.startSlideshowToolStripMenuItem.Name = "startSlideshowToolStripMenuItem";
-            this.startSlideshowToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
+            this.startSlideshowToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startSlideshowToolStripMenuItem.Text = "Slideshow...";
             // 
             // startToolStripMenuItem
@@ -179,13 +190,28 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(133, 6);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(177, 6);
+            // 
+            // launchOnStartupToolStripMenuItem
+            // 
+            this.launchOnStartupToolStripMenuItem.AccessibleRole = System.Windows.Forms.AccessibleRole.CheckButton;
+            this.launchOnStartupToolStripMenuItem.CheckOnClick = true;
+            this.launchOnStartupToolStripMenuItem.Name = "launchOnStartupToolStripMenuItem";
+            this.launchOnStartupToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.launchOnStartupToolStripMenuItem.Text = "Launch on Startup";
+            this.launchOnStartupToolStripMenuItem.Click += new System.EventHandler(this.launchOnStartupToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem1.Text = "Exit";
+            this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem1_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -198,8 +224,9 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About...";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // startButton
             // 
@@ -279,9 +306,9 @@
             this.auxLabelSwitchInterval.AutoSize = true;
             this.auxLabelSwitchInterval.Location = new System.Drawing.Point(7, 277);
             this.auxLabelSwitchInterval.Name = "auxLabelSwitchInterval";
-            this.auxLabelSwitchInterval.Size = new System.Drawing.Size(125, 13);
+            this.auxLabelSwitchInterval.Size = new System.Drawing.Size(60, 13);
             this.auxLabelSwitchInterval.TabIndex = 8;
-            this.auxLabelSwitchInterval.Text = "Switch Interval (minutes):";
+            this.auxLabelSwitchInterval.Text = "Switch In...";
             // 
             // scanFolderButton
             // 
@@ -465,6 +492,9 @@
             // 
             // Slideshow
             // 
+            this.Slideshow.Controls.Add(this.hourRadio);
+            this.Slideshow.Controls.Add(this.minRadio);
+            this.Slideshow.Controls.Add(this.secRadio);
             this.Slideshow.Controls.Add(this.label11);
             this.Slideshow.Controls.Add(this.label10);
             this.Slideshow.Controls.Add(this.label9);
@@ -490,6 +520,40 @@
             this.Slideshow.TabIndex = 19;
             this.Slideshow.TabStop = false;
             this.Slideshow.Text = "Slideshow";
+            // 
+            // hourRadio
+            // 
+            this.hourRadio.AutoSize = true;
+            this.hourRadio.Location = new System.Drawing.Point(227, 275);
+            this.hourRadio.Name = "hourRadio";
+            this.hourRadio.Size = new System.Drawing.Size(51, 17);
+            this.hourRadio.TabIndex = 35;
+            this.hourRadio.TabStop = true;
+            this.hourRadio.Text = "hours";
+            this.hourRadio.UseVisualStyleBackColor = true;
+            // 
+            // minRadio
+            // 
+            this.minRadio.AutoSize = true;
+            this.minRadio.Checked = true;
+            this.minRadio.Location = new System.Drawing.Point(160, 275);
+            this.minRadio.Name = "minRadio";
+            this.minRadio.Size = new System.Drawing.Size(61, 17);
+            this.minRadio.TabIndex = 34;
+            this.minRadio.TabStop = true;
+            this.minRadio.Text = "minutes";
+            this.minRadio.UseVisualStyleBackColor = true;
+            // 
+            // secRadio
+            // 
+            this.secRadio.AutoSize = true;
+            this.secRadio.Location = new System.Drawing.Point(90, 275);
+            this.secRadio.Name = "secRadio";
+            this.secRadio.Size = new System.Drawing.Size(65, 17);
+            this.secRadio.TabIndex = 33;
+            this.secRadio.TabStop = true;
+            this.secRadio.Text = "seconds";
+            this.secRadio.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
@@ -677,6 +741,18 @@
             this.queueHeaderPath.Text = "Path";
             this.queueHeaderPath.Width = 330;
             // 
+            // shuffleToolStripMenuItem
+            // 
+            this.shuffleToolStripMenuItem.Name = "shuffleToolStripMenuItem";
+            this.shuffleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shuffleToolStripMenuItem.Text = "Shuffle...";
+            this.shuffleToolStripMenuItem.Click += new System.EventHandler(this.shuffleToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -693,6 +769,8 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Desktop Slideshow";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
@@ -774,6 +852,13 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.RadioButton hourRadio;
+        private System.Windows.Forms.RadioButton minRadio;
+        private System.Windows.Forms.RadioButton secRadio;
+        private System.Windows.Forms.ToolStripMenuItem launchOnStartupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem shuffleToolStripMenuItem;
     }
 }
 
