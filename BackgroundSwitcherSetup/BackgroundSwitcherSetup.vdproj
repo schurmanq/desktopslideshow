@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_615C40933507952A01248B645003A79F"
+        "MsmKey" = "8:_0AD89DDC30E69DE8FFB4CA5BF89808EF"
         "OwnerKey" = "8:_E32E7782612A465581DF4EA1E80133F5"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -34,13 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_615C40933507952A01248B645003A79F"
+        "OwnerKey" = "8:_E32E7782612A465581DF4EA1E80133F5"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E32E7782612A465581DF4EA1E80133F5"
+        "OwnerKey" = "8:_0AD89DDC30E69DE8FFB4CA5BF89808EF"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -61,6 +61,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -77,6 +85,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -106,14 +130,14 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_615C40933507952A01248B645003A79F"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_0AD89DDC30E69DE8FFB4CA5BF89808EF"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:SKGL, Version=2.0.5.2, Culture=neutral, PublicKeyToken=c2850a745143a030, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_615C40933507952A01248B645003A79F"
+                    "_0AD89DDC30E69DE8FFB4CA5BF89808EF"
                     {
                     "Name" = "8:SKGL.dll"
                     "Attributes" = "3:512"
@@ -223,24 +247,24 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:Desktop Slideshow 2020"
-        "ProductCode" = "8:{CBD7AE29-6424-481A-8318-5AEC56EC6C08}"
-        "PackageCode" = "8:{475247B8-02C9-487F-9170-30B84CF0A143}"
+        "ProductName" = "8:Desktop Slideshow 2021"
+        "ProductCode" = "8:{E2D7EC12-4C8F-4D2F-A8FE-7CDBA9362B02}"
+        "PackageCode" = "8:{4193DA3E-950F-4702-B632-02ADB87F672C}"
         "UpgradeCode" = "8:{533CC7E5-C836-41C8-9DBB-3895D14DDE1A}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:2.1"
         "Manufacturer" = "8:Quin Schurman"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:Desktop Slideshow 2020 Setup"
+        "Title" = "8:Desktop Slideshow 2021 Setup"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Quin Schurman"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:Desktop Slideshow 2020"
+        "ARPCOMMENTS" = "8:Desktop Slideshow 2021"
         "ARPURLINFOABOUT" = "8:"
         "ARPPRODUCTICON" = "8:"
         "ARPIconIndex" = "3:0"
@@ -347,7 +371,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_25BEECF7576E45AA8AD8CD014207EF66"
             {
-            "Name" = "8:Desktop Slideshow 2020"
+            "Name" = "8:Desktop Slideshow 2021"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
@@ -375,7 +399,7 @@
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_737C4029A95A4323A7F333845059A29C"
             {
-            "Name" = "8:Desktop Slideshow 2020"
+            "Name" = "8:Desktop Slideshow 2021"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"

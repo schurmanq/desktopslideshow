@@ -1,26 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using System.Windows.Threading;
-using System.Resources;
 using Windows.Native;
-using SKGL;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
+using Microsoft.Win32;
+using System.Linq;
 
 namespace BackgroundSwitcher {
     public partial class MainForm : Form {
-        public static readonly List<string> ImageExtensions = new List<string>();
+        public static List<string> ImageExtensions = new List<string>();
         public List<string> SlideShowFiles = new List<string>();
         public List<string> SlideShowHistory = new List<string>();
         public System.Timers.Timer cycleTimer = new System.Timers.Timer();
+
+        private static readonly string StartupKey = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run";
+        private static readonly string StartupValue = "DesktopSlideshow";
 
         public BackgroundWorker scanBW;
         public int dirFiles;
@@ -34,6 +29,7 @@ namespace BackgroundSwitcher {
             scanBW.RunWorkerCompleted += new RunWorkerCompletedEventHandler(scanBW_Completed);
             cycleTimer.Elapsed += new System.Timers.ElapsedEventHandler(CycleTimer);
         }
+
 
         public void ProcessDirectory(string targetDirectory) {
             string[] fileEntries = Directory.GetFiles(targetDirectory);
@@ -142,13 +138,17 @@ namespace BackgroundSwitcher {
                 ImageExtensions.Add(".JPG");
             if (bmpBox.Checked)
                 ImageExtensions.Add(".BMP");
+            Properties.Settings.Default.ImageTypes = String.Join(",", ImageExtensions.ToArray());
         }
 
         private void startButton_Click(object sender, EventArgs e) {
             if (!startButton.Enabled) return; // Hacky workaround for toolbar hits.
             double n = GetMinsFromInterVal(switchInterval.Value);
-
-            cycleTimer.Interval = n * 60000;
+            int multVal = 0;
+            if (secRadio.Checked) multVal = 1000;
+            else if (minRadio.Checked) multVal = 60000;
+            else if (hourRadio.Checked) multVal = 3600000;
+            cycleTimer.Interval = n * multVal;
             cycleTimer.Enabled = true;
             auxLabelScanDesc.Text = "Started slideshow of " + SlideShowFiles.Count + " files switching every " + n + " minutes.";
 
@@ -266,6 +266,98 @@ namespace BackgroundSwitcher {
                 MainForm.ActiveForm.Width = 940;
                 queueGroupBox.Visible = true;
                 hideQueueButton.Text = "HIDE QUEUE";
+            }
+        }
+
+        private void exitToolStripMenuItem1_Click(object sender, EventArgs e) {
+            this.Close();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e) {
+            AboutForm aboutForm = new AboutForm();
+            aboutForm.Show();
+        }
+
+        private void launchOnStartupToolStripMenuItem_Click(object sender, EventArgs e) {
+            SetStartup(launchOnStartupToolStripMenuItem.Checked);
+        }
+
+        private void CheckStartup() {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(StartupKey, true);
+
+            if (key.GetValue(StartupValue) == null) {
+                launchOnStartupToolStripMenuItem.Checked = false;
+            } else launchOnStartupToolStripMenuItem.Checked = true;
+        }
+
+        private static void SetStartup(bool startup) {
+            RegistryKey key = Registry.CurrentUser.OpenSubKey(StartupKey, true);
+            switch (startup) {
+                case true: {
+                        key.SetValue(StartupValue, Application.ExecutablePath.ToString());
+                        break;
+                    }
+                case false: {
+                        key.DeleteValue(StartupValue);
+                        break;
+                    }
+            }
+
+        }
+
+        private void LoadSettings() {
+            ImageExtensions = Properties.Settings.Default.ImageTypes.Split(',').ToList();
+            if (ImageExtensions.Contains(".PNG")) pngBox.Checked = true;
+            else pngBox.Checked = false;
+            if (ImageExtensions.Contains(".JPG")) jpgBox.Checked = true;
+            else jpgBox.Checked = false;
+            if (ImageExtensions.Contains(".TIFF")) tiffBox.Checked = true;
+            else tiffBox.Checked = false;
+            if (ImageExtensions.Contains(".BMP")) bmpBox.Checked = true;
+            else bmpBox.Checked = false;
+
+            folderBox.Text = Properties.Settings.Default.ImageFolder;
+            switchInterval.Value = (int)Properties.Settings.Default.TimeAmount;
+            
+            switch(Properties.Settings.Default.TimeType) {
+                case 1: {
+                        secRadio.Checked = true;
+                        break;
+                    }
+                case 2: {
+                        minRadio.Checked = true;
+                        break;
+                    }
+                case 3: {
+                        hourRadio.Checked = true;
+                        break;
+                    }
+            }
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e) {
+            CheckStartup();
+            LoadSettings();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e) {
+            string ImageTypesString = "";
+            if (pngBox.Checked) ImageTypesString += ".PNG,";
+            if (jpgBox.Checked) ImageTypesString += ".JPG,";
+            if (tiffBox.Checked) ImageTypesString += ".TIFF,";
+            if (bmpBox.Checked) ImageTypesString += ".BMP";
+            Properties.Settings.Default.ImageTypes = ImageTypesString;
+
+            Properties.Settings.Default.ImageFolder = folderBox.Text;
+            Properties.Settings.Default.TimeAmount = switchInterval.Value;
+            Properties.Settings.Default.TimeType = minRadio.Checked ? 1 : (secRadio.Checked ? 2 : (hourRadio.Checked ? 3 : 0));
+
+            Properties.Settings.Default.Save();
+        }
+
+        private void shuffleToolStripMenuItem_Click(object sender, EventArgs e) {
+            if(SlideShowFiles.Count > 0) {
+                SlideShowFiles.Shuffle();
             }
         }
     }

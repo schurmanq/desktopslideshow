@@ -1,0 +1,13 @@
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\bin\Release\Desktop Slideshow.exe.config
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\bin\Release\Desktop Slideshow.exe
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\bin\Release\Desktop Slideshow.pdb
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\bin\Release\SKGL.dll
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.AboutForm.resources
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.MainForm.resources
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.Properties.Resources.resources
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.Splash.resources
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.csproj.GenerateResource.cache
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.csproj.CoreCompileInputs.cache
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\BackgroundSwitcher.csproj.CopyComplete
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\Desktop Slideshow.exe
+F:\Projects\BackgroundSwitcher\BackgroundSwitcher\obj\Release\Desktop Slideshow.pdb
